@@ -43,7 +43,7 @@ export const getStaticProps = async () => {
 	const data = await res.json();
 
 	const featuredProducts: IProduct[] = [];
-	while (featuredProducts.length < 6) {
+	while (featuredProducts.length < 8) {
 		const randomIndex = Math.floor(Math.random() * data.data.length);
 		const randomProduct = data.data[randomIndex];
 		if (!featuredProducts.includes(randomProduct)) {

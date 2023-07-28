@@ -1,5 +1,9 @@
 # PC Builder Website - Features and User Guide
 
+## Frontend Live Link: https://pc-builder-beta.vercel.app/
+
+## Server Link: https://pc-house.vercel.app/
+
 ## Description:
 
 The PC Builder website is a user-friendly platform that allows users to build their own custom PC by selecting various PC components from different categories. The website is built using Next.js, a popular React framework, and it incorporates Server-Side Generation (SSG) for the Home Page, Featured Category Pages, and Product Detail Pages. It also uses Server-Side Rendering (SSR) for the PC Builder Page, where users can select and add components to their PC build.
