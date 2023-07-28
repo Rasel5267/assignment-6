@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { RootState } from "@/redux/store";
 import { AiOutlineDelete } from "react-icons/ai";
-import { removeFromBuilder } from "@/redux/features/products/productSlice";
+import {
+	clearState,
+	removeFromBuilder,
+} from "@/redux/features/products/productSlice";
 
 const categories = [
 	{ category: "CPU" },
@@ -27,7 +30,8 @@ const PcBuilder = () => {
 	};
 
 	const handleSubmit = () => {
-		alert("Successfully build your pc");
+		alert("Successfully build your pc!");
+		dispatch(clearState());
 	};
 
 	return (

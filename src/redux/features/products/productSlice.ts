@@ -31,9 +31,13 @@ const productSlice = createSlice({
 				(product) => product._id !== action.payload._id
 			);
 		},
+		clearState: (state) => {
+			state.products = [];
+		},
 	},
 });
 
-export const { addToBuilder, removeFromBuilder } = productSlice.actions;
+export const { addToBuilder, removeFromBuilder, clearState } =
+	productSlice.actions;
 
 export default productSlice.reducer;
