@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 
 const Home = () => {
 	return (
-		<div>
+		<div className="px-5 mx-auto mb-8">
 			<h2>Home</h2>
 		</div>
 	);
