@@ -25,7 +25,7 @@ Products.getLayout = function getLayout(page: ReactElement) {
 
 export default Products;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
 	const res = await fetch("https://pc-house.vercel.app/products");
 	const data = await res.json();
 

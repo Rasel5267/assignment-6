@@ -25,7 +25,7 @@ Category.getLayout = function getLayout(page: ReactElement) {
 
 export default Category;
 
-export const getServerSideProps = async (context: { params: any }) => {
+export const getStaticProps = async (context: { params: any }) => {
 	const { params } = context;
 	const res = await fetch(
 		`https://pc-house.vercel.app/products/category/${params.category}`

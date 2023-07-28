@@ -66,7 +66,18 @@ ProductDetails.getLayout = function getLayout(page: ReactElement) {
 
 export default ProductDetails;
 
-export const getServerSideProps = async (context: { params: any }) => {
+export const getStaticPaths = async () => {
+	const res = await fetch("https://pc-house.vercel.app/products");
+	const data = await res.json();
+
+	const paths = data.data.map((product: IProduct) => ({
+		params: { id: product._id },
+	}));
+
+	return { paths, fallback: true };
+};
+
+export const getStaticProps = async (context: any) => {
 	const { params } = context;
 	const res = await fetch(`https://pc-house.vercel.app/product/${params.id}`);
 	const data = await res.json();
