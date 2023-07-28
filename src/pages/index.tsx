@@ -56,5 +56,6 @@ export const getStaticProps = async () => {
 			products: featuredProducts,
 			allProducts: data.data,
 		},
+		revalidate: 10,
 	};
 };

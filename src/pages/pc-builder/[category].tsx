@@ -1,4 +1,4 @@
-import ProductCard from "@/components/UI/ProductCard";
+import PCBuilderCard from "@/components/UI/PCBuilderCard";
 import Layout from "@/components/layout/Layout";
 import { IProduct } from "@/types/globalTypes";
 import React, { ReactElement } from "react";
@@ -7,36 +7,25 @@ interface Props {
 	products: IProduct[];
 }
 
-const Category = ({ products }: Props) => {
+const PcBuildCategory = ({ products }: Props) => {
 	return (
 		<div className="my-12 px-5 mx-auto">
 			<div className="grid grid-auto-fit-lg gap-4">
 				{products.map((product: IProduct) => (
-					<ProductCard product={product} key={product._id} />
+					<PCBuilderCard product={product} key={product._id} />
 				))}
 			</div>
 		</div>
 	);
 };
 
-Category.getLayout = function getLayout(page: ReactElement) {
+PcBuildCategory.getLayout = function getLayout(page: ReactElement) {
 	return <Layout>{page}</Layout>;
 };
 
-export default Category;
+export default PcBuildCategory;
 
-export const getStaticPaths = async () => {
-	const res = await fetch("https://pc-house.vercel.app/categories");
-	const data = await res.json();
-
-	const paths = data.data.map((category: { category: string }) => ({
-		params: { category: category.category },
-	}));
-
-	return { paths, fallback: false };
-};
-
-export const getStaticProps = async (context: any) => {
+export const getServerSideProps = async (context: any) => {
 	const { params } = context;
 	const res = await fetch(
 		`https://pc-house.vercel.app/products/category/${params.category}`
