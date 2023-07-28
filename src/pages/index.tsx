@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import { IProduct } from "@/types/globalTypes";
 import ProductCard from "@/components/UI/ProductCard";
 import FeaturedCategories from "@/components/UI/FeaturedCategories";
+import Banner from "@/components/UI/Banner";
 
 interface HomeProps {
 	products: IProduct[];
@@ -12,7 +13,7 @@ interface HomeProps {
 const Home = ({ products, allProducts }: HomeProps) => {
 	return (
 		<div className="px-5 mx-auto mb-8">
-			<h2>Home</h2>
+			<Banner />
 			<h2 className="py-12 text-2xl font-semibold text-center">
 				Featured Products
 			</h2>
