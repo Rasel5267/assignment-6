@@ -2,12 +2,14 @@ import React, { ReactElement } from "react";
 import Layout from "@/components/layout/Layout";
 import { IProduct } from "@/types/globalTypes";
 import ProductCard from "@/components/UI/ProductCard";
+import FeaturedCategories from "@/components/UI/FeaturedCategories";
 
 interface HomeProps {
 	products: IProduct[];
+	allProducts: IProduct[];
 }
 
-const Home = ({ products }: HomeProps) => {
+const Home = ({ products, allProducts }: HomeProps) => {
 	return (
 		<div className="px-5 mx-auto mb-8">
 			<h2>Home</h2>
@@ -22,6 +24,9 @@ const Home = ({ products }: HomeProps) => {
 			<h2 className="py-12 text-2xl font-semibold text-center">
 				Featured Categories
 			</h2>
+			<div>
+				<FeaturedCategories products={allProducts} />
+			</div>
 		</div>
 	);
 };
@@ -48,6 +53,7 @@ export const getServerSideProps = async () => {
 	return {
 		props: {
 			products: featuredProducts,
+			allProducts: data.data,
 		},
 	};
 };
