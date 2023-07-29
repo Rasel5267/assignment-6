@@ -9,17 +9,11 @@ import {
 	removeFromBuilder,
 } from "@/redux/features/products/productSlice";
 
-const categories = [
-	{ category: "CPU" },
-	{ category: "Motherboard" },
-	{ category: "Power Supply Unit" },
-	{ category: "RAM" },
-	{ category: "Storage Device" },
-	{ category: "Monitor" },
-	{ category: "Others" },
-];
+interface Props {
+	categories: Array<{ category: string }>;
+}
 
-const PcBuilder = () => {
+const PcBuilder = ({ categories }: Props) => {
 	const { products } = useAppSelector((state: RootState) => state.product);
 	const dispatch = useAppDispatch();
 
@@ -113,3 +107,14 @@ PcBuilder.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default PcBuilder;
+
+export const getServerSideProps = async () => {
+	const res = await fetch("https://pc-house.vercel.app/categories");
+	const data = await res.json();
+
+	return {
+		props: {
+			categories: data.data,
+		},
+	};
+};
